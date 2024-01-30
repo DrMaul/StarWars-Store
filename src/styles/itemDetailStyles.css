@@ -1,0 +1,13 @@
+.bordes-metalicos-detail {
+    padding:5px;
+    height: auto;
+    background-image: url("../assets/bordemetal.jpg"); 
+    border-radius: 20px;
+}
+
+.fondo-metalico-detail {
+    height: auto;
+    width: auto;
+    background-image: url("../assets/fondometal.jpg"); 
+    border-radius: 20px;
+}
