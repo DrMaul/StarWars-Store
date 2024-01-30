@@ -1,4 +1,4 @@
-import Header from './components/Header'
+import Navbar from './components/Navbar'
 import Carrousel from './components/Carrousel'
 import ItemListContainer from './components/ItemListContainer'
 
@@ -8,7 +8,9 @@ const App = () => {
 
   return (
     <div>
-      <Header/>
+      
+      <Navbar/>
+
       <Carrousel/>
       <ItemListContainer greeting={"No se encontraron productos"} />
     </div>
