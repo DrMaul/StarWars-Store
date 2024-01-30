@@ -1,4 +1,4 @@
-
+import { NavLink } from "react-router-dom";
 import CartWidget from "./CartWidget"
 import Logo from "./Logo"
 
@@ -23,25 +23,25 @@ const Navbar = () => {
               <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNavDropdown">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">Inicio</a>
+                    <NavLink className="nav-link active" aria-current="page" to={"/"}>Inicio</NavLink>
                   </li>
                   <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <NavLink className="nav-link dropdown-toggle text-danger" to={"/"} role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Productos
-                    </a>
+                    </NavLink>
                     <ul className="dropdown-menu">
-                      <li><a className="dropdown-item" href="#">Naves</a></li>
-                      <li><a className="dropdown-item" href="#">Blásters</a></li>
-                      <li><a className="dropdown-item" href="#">Droides</a></li>
-                      <li><a className="dropdown-item" href="#">Tecnología</a></li>
-                      <li><a className="dropdown-item" href="#">Curiosidades</a></li>
+                      <li><NavLink className="dropdown-item" to={"/category/naves"}>Naves</NavLink></li>
+                      <li><NavLink className="dropdown-item" to={"/category/blasters"}>Blásters</NavLink></li>
+                      <li><NavLink className="dropdown-item" to={"/category/droides"}>Droides</NavLink></li>
+                      <li><NavLink className="dropdown-item" to={"/category/tecnologia"}>Tecnología</NavLink></li>
+                      <li><NavLink className="dropdown-item" to={"/category/curiosidades"}>Curiosidades</NavLink></li>
                     </ul>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">Noticias</a>
+                    <NavLink className="nav-link" to={"/"}>Noticias</NavLink>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">Contacto</a>
+                    <NavLink className="nav-link" to={"/"}>Contacto</NavLink>
                   </li>
                   
                 </ul>
