@@ -20,7 +20,7 @@ const Item = ({item}) => {
                     <li className="list-group-item">Precio: ${item.price} creditos</li>
                 </ul>
                 <div className="card-body">
-                    <a href="#" className="btn btn-dark card-link" style={{backgroundImage: `url(${FondoMetalDark})`, boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)'}}>Agregar al carrito</a>
+                    <Link to={"/item/" + item.id} className="btn btn-dark card-link" style={{backgroundImage: `url(${FondoMetalDark})`, boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)'}}>Ver detalles</Link>
                 </div>
             </div>
         </div>

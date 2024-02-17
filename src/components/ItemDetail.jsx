@@ -1,8 +1,16 @@
 import ItemCount from "./ItemCount"
 import '../styles/itemDetailStyles.css'
+import { useContext } from "react"
+import { CartContext } from "./context/CartContext"
 
 
 const ItemDetail = ({item}) => {
+  const {addItem} = useContext(CartContext);
+
+  const onAdd = (cantidad) => {
+    addItem(item, cantidad);
+  }
+
     return (
       <div className="container bordes-metalicos-detail">
         <div className="fondo-metalico-detail">
@@ -15,7 +23,7 @@ const ItemDetail = ({item}) => {
                     <h2>Precio: ${item.price}</h2>
                     <p>{item.description}</p>
                     <p><b>Categoria: {item.categoria}</b></p>
-                    <ItemCount stock={item.stock}/>
+                    <ItemCount stock={item.stock} onAdd={onAdd}/>
                 </div>
             </div>
             
