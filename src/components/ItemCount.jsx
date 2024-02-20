@@ -1,5 +1,4 @@
 import {useEffect, useState } from "react";
-import FondoMetalDark from '../assets/fondometal-dark.jpg'
 import { Link } from "react-router-dom";
 
 const ItemCount = ({stock, onAdd}) => {
@@ -36,7 +35,7 @@ const ItemCount = ({stock, onAdd}) => {
         <>
             <div className="row my-1">
                 <div className="col-md-12">
-                    <div className="btn-group" role="group" aria-label="Basic example" style={{backgroundImage: `url(${FondoMetalDark})`, boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)'}}>
+                    <div className="btn-group btn-dark-metal" role="group" aria-label="Basic example">
                         <button type="button" className="btn text-white" onClick={decrementar} >-</button>
                         <button type="button" className="btn text-white" >{contador}</button>
                         <button type="button" className="btn text-white" onClick={incrementar}>+</button>
@@ -46,9 +45,9 @@ const ItemCount = ({stock, onAdd}) => {
             <div className="row my-1">
                 <div className="col-md-12">
                     {itemAgregado ?
-                        <Link to={"/cart"} className="btn btn-dark" style={{backgroundImage: `url(${FondoMetalDark})`, boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)'}}>Finalizar compra</Link>
+                        <Link to={"/cart"} className="btn btn-dark btn-dark-metal">Ver carrito</Link>
                      :
-                     <button type="button" className="btn btn-dark" onClick={addToCart} style={{backgroundImage: `url(${FondoMetalDark})`, boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)'}}>Agregar al Carrito</button>   
+                     <button type="button" className="btn btn-dark btn-dark-metal" onClick={addToCart} >Agregar al Carrito</button>   
                     }
                 </div>
             </div>

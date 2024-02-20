@@ -21,58 +21,53 @@ const Cart = () => {
 
   return (
     <div className="container">
-                <div className="row">
-                    <div className="col text-center">
+        <div className="row">
+            <div className="col text-center">
+                <div className="my-3 bordes-metalicos">
+                    <div className="py-3 fondo-metalico">
                         <h1>Mi carrito</h1>
-                        <div className="list-group">
-
-                            <div className="list-group-item list-group-item-action">
-                                <div className="d-flex w-100 justify-content-between align-items-center">
-                                    
-                                    <h4 className="mb-1">Imagen</h4>
-                                    <h4 className="mb-1">Nombre</h4>
-                                    <h4 className="mb-1">Precio</h4>
-                                    <h4 className="mb-1">Cantidad</h4>
-                                    <h4 className="mb-1">Precio Total</h4>
-                                    <h4 className="mb-1"></h4>
-                                    
-                                </div>
-                            </div>
-
-                            {cart.map(product =>
-                                <div key={product.id} className="list-group-item list-group-item-action">
-                                    <div className="d-flex w-100 justify-content-between align-items-center">
-                                        <img src={product.image} alt="{product.name}" width={80}/>
-                                        <h5 className="mb-1">{product.name}</h5>
-                                        <p>{product.price}</p>
-                                        <p>{product.quantity}</p>
-                                        <p>${product.quantity * product.price}</p>
-                                        <a href="#" onClick={()=> {removeItem(product.id)}}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
-                                            </svg>
-                                        </a>
-                                        
-                                    </div>
-                                </div>
-                            )}
-                            
-                            <div href="#" className="list-group-item list-group-item-action">
-                                <div className="d-flex w-100 justify-content-between">
-                                    <h3 className="mb-1">Suma total</h3>
-                                    <a href="#" className="btn btn-dark" onClick={clear}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
-                                            </svg>
-                                    </a>
-                                    <Link to={"/checkout"} className="btn btn-success">Finalizar Compra</Link>
-                                    <p className="fw-bold">${SumaTotalProductos()}</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div className="row">
+            <table className="table table-hover">
+                <thead>
+                    <tr className="fondo-metalico-borde" >
+                        <th scope="col" colSpan={2} className="fondo-metalico-borde text-center align-middle">Producto</th>
+                        <th scope="col" className="fondo-metalico-borde">Precio</th>
+                        <th scope="col"className="fondo-metalico-borde">Cantidad</th>
+                        <th scope="col"className="fondo-metalico-borde">Precio total</th>
+                        <th scope="col"className="fondo-metalico-borde">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {cart.map(product =>
+                        <tr key={product.id}>
+                            <td scope="col" className="fondo-metalico-borde text-center align-middle"><img src={product.image} alt="{product.name}" width={80}/></td>
+                            <td scope="col" className="fondo-metalico-borde align-middle">{product.name}</td>
+                            <td scope="col" className="fondo-metalico-borde align-middle">${product.price}</td>
+                            <td scope="col" className="fondo-metalico-borde align-middle">{product.quantity}</td>
+                            <td scope="col" className="fondo-metalico-borde align-middle">${product.quantity * product.price}</td>
+                            <td scope="col" className="fondo-metalico-borde text-center align-middle"><a href="#" onClick={()=> {removeItem(product.id)}}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" className="bi bi-trash-fill" viewBox="0 0 16 16">
+                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                                </svg>
+                            </a></td>
+ 
+                        </tr>
+                    )}
+                    <tr>
+                        <td scope="col" className="fondo-metalico-borde text-center align-middle" colSpan={2}><h3 className="mb-1">Suma total: ${SumaTotalProductos()}</h3></td>
+                        <td scope="col" className="fondo-metalico-borde text-center align-middle" colSpan={2}><button href="#" className="btn btn-danger" onClick={clear}>Vaciar carrito</button></td>
+                        <td scope="col" className="fondo-metalico-borde text-center align-middle" colSpan={2}><Link to={"/checkout"} className="btn btn-success"><h5>Ir a pagar</h5></Link></td>
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
   )
 }
 

@@ -1,5 +1,4 @@
 import ItemCount from "./ItemCount"
-import '../styles/itemDetailStyles.css'
 import { useContext } from "react"
 import { CartContext } from "./context/CartContext"
 
@@ -12,8 +11,8 @@ const ItemDetail = ({item}) => {
   }
 
     return (
-      <div className="container bordes-metalicos-detail">
-        <div className="fondo-metalico-detail">
+      <div className="container bordes-metalicos">
+        <div className="fondo-metalico">
             <div className="row px-2">
                 <div className="col-md-5 d-flex justify-content-center">
                     <img src={item.image} alt={item.name} className="img-fluid"/>

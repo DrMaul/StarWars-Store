@@ -66,7 +66,7 @@ export const Checkout = () => {
                     <div className="col">
                         <div className="list-group">
 
-                        <div className="list-group-item list-group-item-action">
+                        <div className="list-group-item list-group-item-action fondo-metalico-borde">
                             <div className="d-flex w-100 justify-content-between align-items-center">
                                 
                                 <h4 className="mb-1">Imagen</h4>
@@ -80,7 +80,7 @@ export const Checkout = () => {
                         </div>
 
                         {cart.map(product =>
-                            <div key={product.id} className="list-group-item list-group-item-action">
+                            <div key={product.id} className="list-group-item list-group-item-action fondo-metalico-borde">
                                 <div className="d-flex w-100 justify-content-between align-items-center">
                                     <img src={product.image} alt="{product.name}" width={80}/>
                                     <h5 className="mb-1">{product.name}</h5>
@@ -93,7 +93,7 @@ export const Checkout = () => {
                             </div>
                         )}
                         
-                        <div href="#" className="list-group-item list-group-item-action">
+                        <div href="#" className="list-group-item list-group-item-action fondo-metalico-borde">
                             <div className="d-flex w-100 justify-content-between">
                                 <h3 className="mb-1">Suma total</h3>
                                 <p className="fw-bold">${SumaTotalProductos()}</p>
