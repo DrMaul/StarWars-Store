@@ -8,16 +8,23 @@ export const Checkout = () => {
     const [email, setEmail] = useState();
     const [telefono, setTelefono] = useState();
     const [orderId, setOrderId] = useState();
-    const  {cart, CantTotalProductos, SumaTotalProductos, clear} = useContext(CartContext);
+    const [errorId, setErrorId] = useState(0);
+    const  {cart, SumaTotalProductos, clear} = useContext(CartContext);
 
     const generarOrden = () => {
-        if (nombre.length === 0 || email.length === 0 || telefono.length === 0 ) {
-            console.log(nombre)
-            console.log(email)
-            console.log(telefono)
-            console.log("no tengo datos en formulario")
+        if(cart.length === 0){
+            console.log("error: carrito vacio")
+            setErrorId("Carrito vacío, intente nuevamente");
             return false;
         }
+
+        if (!nombre || !email || !telefono ) {
+            console.log("error: formulario vacio")
+            setErrorId("Formulario vacío, intente nuevamente");
+            return false;
+        }
+
+        
 
         const buyer = {name:nombre, email:email, phone:telefono};
         const items = cart.map(item => ({id: item.idProd, title: item.name, price: item.price}));
@@ -34,84 +41,99 @@ export const Checkout = () => {
             console.log(resultado);
             clear();
             setOrderId(resultado.id);
+            setErrorId(0);
         })
 
     }
+
+
 
   return (
     <div className="container">
                 <div className="row">
                     <div className="col text-center">
-                        <h1>Checkout</h1>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                    <form>
-                        <div className="mb-3">
-                            <label className="form-label">Nombre</label>
-                            <input type="text" className="form-control" onInput={(e) => {setNombre(e.target.value)}}/>
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Email</label>
-                            <input type="text" className="form-control" onInput={(e) => {setEmail(e.target.value)}}/>
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Teléfono</label>
-                            <input type="text" className="form-control" onInput={(e) => {setTelefono(e.target.value)}}/>
-                        </div>
-                        <button type="button" className="btn btn-dark" onClick={generarOrden}>Pagar</button>
-                    </form>
-                    </div>
-                    <div className="col">
-                        <div className="list-group">
-
-                        <div className="list-group-item list-group-item-action fondo-metalico-borde">
-                            <div className="d-flex w-100 justify-content-between align-items-center">
-                                
-                                <h4 className="mb-1">Imagen</h4>
-                                <h4 className="mb-1">Nombre</h4>
-                                <h4 className="mb-1">Precio</h4>
-                                <h4 className="mb-1">Cantidad</h4>
-                                <h4 className="mb-1">Precio Total</h4>
-                                <h4 className="mb-1"></h4>
-                                
-                            </div>
-                        </div>
-
-                        {cart.map(product =>
-                            <div key={product.id} className="list-group-item list-group-item-action fondo-metalico-borde">
-                                <div className="d-flex w-100 justify-content-between align-items-center">
-                                    <img src={product.image} alt="{product.name}" width={80}/>
-                                    <h5 className="mb-1">{product.name}</h5>
-                                    <p>{product.price}</p>
-                                    <p>{product.quantity}</p>
-                                    <p>${product.quantity * product.price}</p>
-                                    
-                                    
-                                </div>
-                            </div>
-                        )}
-                        
-                        <div href="#" className="list-group-item list-group-item-action fondo-metalico-borde">
-                            <div className="d-flex w-100 justify-content-between">
-                                <h3 className="mb-1">Suma total</h3>
-                                <p className="fw-bold">${SumaTotalProductos()}</p>
+                        <div className="my-3 bordes-metalicos">
+                            <div className="py-3 fondo-metalico">
+                                <h1>Checkout</h1>
                             </div>
                         </div>
                     </div>
-                    </div>
-
                     
+                </div>
+                
+                <div className="bordes-metalicos">
+                    <div className="fondo-metalico">
+                        <div className="row p-3">
+                            <div className="col">
+                                <form>
+                                    <div className="mb-3">
+                                        <label className="form-label"><h4>Nombre</h4></label>
+                                        <input type="text" className="form-control" onInput={(e) => {setNombre(e.target.value)}}/>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label"><h4>Email</h4></label>
+                                        <input type="text" className="form-control" onInput={(e) => {setEmail(e.target.value)}}/>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label"><h4>Teléfono</h4></label>
+                                        <input type="text" className="form-control" onInput={(e) => {setTelefono(e.target.value)}}/>
+                                    </div>
+                                    <button type="button" className="btn btn-dark btn-dark-metal" onClick={generarOrden}><h2>Pagar</h2></button>
+                                </form>
+                            </div>
+                            <div className="col">
+                            <table className="table table-hover">
+                <thead>
+                    <tr className="fondo-metalico-borde" >
+                        <th scope="col" colSpan={2} className="fondo-metalico-borde text-center align-middle">Producto</th>
+                        <th scope="col" className="fondo-metalico-borde">Precio</th>
+                        <th scope="col"className="fondo-metalico-borde">Cantidad</th>
+                        <th scope="col"className="fondo-metalico-borde">Precio total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {cart.map(product =>
+                        <tr key={product.id}>
+                            <td scope="col" className="fondo-metalico-borde text-center align-middle"><img src={product.image} alt="{product.name}" width={80}/></td>
+                            <td scope="col" className="fondo-metalico-borde align-middle">{product.name}</td>
+                            <td scope="col" className="fondo-metalico-borde align-middle">${product.price}</td>
+                            <td scope="col" className="fondo-metalico-borde align-middle">{product.quantity}</td>
+                            <td scope="col" className="fondo-metalico-borde align-middle">${product.quantity * product.price}</td>
+                        </tr>
+                    )}
+                    <tr>
+                        <td scope="col" className="fondo-metalico-borde text-center align-middle" colSpan={5}><h3 className="mb-1">Suma total: ${SumaTotalProductos()}</h3></td>
+                        
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="row my-5">
                     <div className="col text-center">
-                        {!orderId ? 
+                        {orderId ? 
                             <div className="alert alert-success" role="alert">
                                 <h1>Gracias por tu compra!</h1>
                                 <h3>Tu ID de compra es: <strong>{orderId}</strong></h3>
-                                <Link to={"/"} className="btn btn-dark my-4">Volver al inicio</Link>
+                                <Link to={"/"} className="btn btn-dark btn-dark-metal my-4">Volver al inicio</Link>
+                            </div>
+                        :
+                            ""
+                        }
+                    </div>
+                </div>
+
+                <div className="row my-5">
+                    <div className="col text-center">
+                        {errorId != 0 ? 
+                            <div className="alert alert-danger" role="alert">
+                                <h1>Error al comprar!</h1>
+                                <h3><strong>{errorId}</strong></h3>
                             </div>
                         :
                             ""
