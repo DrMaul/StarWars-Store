@@ -23,3 +23,39 @@
     color:rgb(0, 0, 0) !important;
     font-size: 22px;
 }
+
+.footer  {
+    padding-top:10px;
+    background-image: url("../assets/bordemetal.jpg"); 
+    box-shadow: 42px 42px 24px rgba(0, 0, 0, 0.01), 24px 24px 20px rgba(0, 0, 0, 0.03), 11px 11px 15px rgba(0, 0, 0, 0.04), 3px 3px 8px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0.05);
+
+  }
+
+  .footer .footer-menu {
+    background-image: url("../assets/fondometal-dark.jpg"); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    margin-bottom: 3px;
+  }
+  
+  .footer .footer-menu p a, .footer .footer-menu .social-media-icon {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  .footer .footer-menu p a:hover, .footer .footer-menu .social-media-icon:hover {
+    color: rgb(143, 143, 143);
+  }
+  .footer .footer-legal {
+    background-image: url("../assets/fondometal-dark.jpg"); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgb(255, 255, 255);
+  }
+  .footer .footer-legal a {
+    color: rgb(143, 143, 143);
+    text-decoration: none;
+    transition: 0.5s;
+  }

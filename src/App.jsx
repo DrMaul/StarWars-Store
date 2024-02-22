@@ -4,6 +4,7 @@ import ItemDetailContainer from './components/ItemDetailContainer'
 import Error404 from './components/Error404'
 import Cart from './components/Cart'
 import CartContextProvider from './components/context/CartContext'
+import Footer from './components/Footer'
 import {Checkout}  from './components/Checkout'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -33,6 +34,8 @@ const App = () => {
 
       
         </Routes>
+
+        <Footer/>
 
       </BrowserRouter>
 
